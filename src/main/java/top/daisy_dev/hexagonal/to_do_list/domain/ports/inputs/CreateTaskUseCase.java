@@ -1,9 +1,9 @@
 package top.daisy_dev.hexagonal.to_do_list.domain.ports.inputs;
 
-import org.springframework.scheduling.config.Task;
+import top.daisy_dev.hexagonal.to_do_list.domain.models.Task;
 
 public interface CreateTaskUseCase {
 
-    Task createTask(Task task);
+    Task saveTask(Task task);
 
 }

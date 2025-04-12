@@ -45,8 +45,8 @@ public class TaskService implements CreateTaskUseCase, UpdateTaskUseCase, Retrie
     }
 
     @Override
-    public Optional<Task> updateTask(Long taskId, Task toUpdateTask) {
-        return updateTaskUseCase.updateTask(taskId, toUpdateTask);
+    public Optional<Task> updateTask(Task toUpdateTask) {
+        return updateTaskUseCase.updateTask(toUpdateTask);
     }
 
 }

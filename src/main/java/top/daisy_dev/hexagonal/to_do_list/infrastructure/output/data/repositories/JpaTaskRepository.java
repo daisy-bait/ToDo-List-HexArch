@@ -5,4 +5,4 @@ import org.springframework.stereotype.Repository;
 import top.daisy_dev.hexagonal.to_do_list.infrastructure.output.data.entities.TaskEntity;
 
 @Repository
-public interface JpaTaskRepository extends JpaRepository<Long, TaskEntity> { }
+public interface JpaTaskRepository extends JpaRepository<TaskEntity, Long> { }

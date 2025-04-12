@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface UpdateTaskUseCase {
 
-    Optional<Task> updateTask(Long taskId, Task toUpdateTask);
+    Optional<Task> updateTask(Task toUpdateTask);
 
 }

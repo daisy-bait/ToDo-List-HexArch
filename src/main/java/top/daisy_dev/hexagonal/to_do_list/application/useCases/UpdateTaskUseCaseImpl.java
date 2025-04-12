@@ -14,8 +14,8 @@ public class UpdateTaskUseCaseImpl implements UpdateTaskUseCase {
     private final TaskRepositoryPort taskRepositoryPort;
 
     @Override
-    public Optional<Task> updateTask(Long taskId, Task toUpdateTask) {
-        return taskRepositoryPort.updateTask(toUpdateTask, taskId);
+    public Optional<Task> updateTask(Task toUpdateTask) {
+        return taskRepositoryPort.updateTask(toUpdateTask);
     }
 
 }

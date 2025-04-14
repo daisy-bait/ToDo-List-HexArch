@@ -27,7 +27,7 @@ public class ExternalServiceAdapter implements ExternalServicePort {
 
         if (fakeUser == null) return null;
 
-        return new AdditionalTaskInfo(fakeUser.getId(), fakeUser.getName(), fakeUser.getEmail());
+        return new AdditionalTaskInfo(fakeUser.getId(), fakeUser.getName(), fakeUser.getEmail(), fakeTodo.getTitle(), fakeTodo.isCompleted());
     }
 
 }

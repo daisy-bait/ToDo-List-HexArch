@@ -13,5 +13,7 @@ public class JsonPlaceHolderTodoDTO {
 
     private Long id;
     private Long userId;
+    private String title;
+    private boolean completed;
 
 }

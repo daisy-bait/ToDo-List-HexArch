@@ -23,5 +23,7 @@ public class AdditionalTaskInfo {
     private final Long userId;
     private final String userName;
     private final String userEmail;
+    private final String taskName;
+    private final boolean completed;
 
 }

@@ -7,9 +7,8 @@ import top.daisy_dev.hexagonal.to_do_list.application.useCases.*;
 import top.daisy_dev.hexagonal.to_do_list.domain.ports.inputs.GetAdditionalTaskInfoUseCase;
 import top.daisy_dev.hexagonal.to_do_list.domain.ports.outputs.ExternalServicePort;
 import top.daisy_dev.hexagonal.to_do_list.domain.ports.outputs.TaskRepositoryPort;
-import top.daisy_dev.hexagonal.to_do_list.infrastructure.output.data.adapters.ExternalServiceAdapter;
+import top.daisy_dev.hexagonal.to_do_list.infrastructure.output.external.adapter.ExternalServiceAdapter;
 import top.daisy_dev.hexagonal.to_do_list.infrastructure.output.data.adapters.TaskRepositoryAdapter;
-import top.daisy_dev.hexagonal.to_do_list.infrastructure.output.data.repositories.JpaTaskRepository;
 
 @Configuration
 public class ApplicationConfig {

@@ -13,7 +13,11 @@ public class DeleteTaskUseCaseImpl implements DeleteTaskUseCase {
 
     @Override
     public boolean deleteTask(Long taskId) {
-        return taskRepositoryPort.deleteTaskById(taskId);
+        if (taskRepositoryPort.findTaskById(taskId).isPresent()) {
+            taskRepositoryPort.deleteTaskById(taskId);
+            return true;
+        }
+        return false;
     }
 
 }

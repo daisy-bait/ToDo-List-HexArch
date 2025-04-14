@@ -1,4 +1,4 @@
-package top.daisy_dev.hexagonal.to_do_list.infrastructure.input.controller;
+package top.daisy_dev.hexagonal.to_do_list.infrastructure.input.rest.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.*;
 import top.daisy_dev.hexagonal.to_do_list.application.services.TaskService;
 import top.daisy_dev.hexagonal.to_do_list.domain.models.AdditionalTaskInfo;
 import top.daisy_dev.hexagonal.to_do_list.domain.models.Task;
+import top.daisy_dev.hexagonal.to_do_list.infrastructure.input.rest.dto.TaskDTO;
+import top.daisy_dev.hexagonal.to_do_list.infrastructure.input.rest.mapper.TaskRestMapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @RestController
@@ -17,27 +20,34 @@ public class TaskController {
 
     private final TaskService taskService;
 
+    private final TaskRestMapper mapper;
+
     @PostMapping("/save")
-    public ResponseEntity<Task> saveTask(@RequestBody Task task) {
-        Task createdTask = taskService.saveTask(task);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdTask);
+    public ResponseEntity<TaskDTO> saveTask(@RequestBody TaskDTO task) {
+        Task createdTask = taskService.saveTask(mapper.toDomainModel(task));
+        return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toDto(createdTask));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Task> updateTask(@RequestBody Task task, @PathVariable Long id) {
-        Task updatedTask = taskService.updateTask(task, id);
-        return ResponseEntity.status((HttpStatus.OK)).body(updatedTask);
+    public ResponseEntity<TaskDTO> updateTask(@RequestBody TaskDTO task, @PathVariable Long id) {
+        Task updatedTask = taskService.updateTask(mapper.toDomainModel(task), id);
+        return ResponseEntity.status((HttpStatus.OK)).body(mapper.toDto(updatedTask));
     }
 
     @GetMapping("/retrieve/{taskId}")
-    ResponseEntity<Task> retrieveTask(@PathVariable Long taskId) {
+    ResponseEntity<TaskDTO> retrieveTask(@PathVariable Long taskId) {
         Task task = taskService.retrieveTask(taskId);
-        return ResponseEntity.ok(task);
+        return ResponseEntity.ok(mapper.toDto(task));
     }
 
     @GetMapping("/retrieve")
-    ResponseEntity<List<Task>> retrieveAllTasks() {
-        return ResponseEntity.ok(taskService.retrieveTasks());
+    ResponseEntity<List<TaskDTO>> retrieveAllTasks() {
+        return ResponseEntity.ok(
+                taskService.retrieveTasks()
+                        .stream()
+                        .map(task -> mapper.toDto(task))
+                        .collect(Collectors.toList())
+        );
     }
 
     @DeleteMapping("/delete/{taskId}")

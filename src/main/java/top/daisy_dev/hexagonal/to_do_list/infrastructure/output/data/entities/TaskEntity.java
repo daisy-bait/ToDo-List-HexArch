@@ -33,24 +33,4 @@ public class TaskEntity {
 
     private boolean completed;
 
-    public static TaskEntity toEntity(Task taskModel) {
-        return new TaskEntity(
-                taskModel.getId(),
-                taskModel.getTitle(),
-                taskModel.getDescription(),
-                taskModel.getCreatedAt(),
-                taskModel.isCompleted()
-        );
-    }
-
-    public Task toDomainModel() {
-        return new Task(
-                this.id,
-                this.title,
-                this.description,
-                this.startDate,
-                this.completed
-        );
-    }
-
 }

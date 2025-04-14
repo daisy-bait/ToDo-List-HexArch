@@ -13,6 +13,8 @@ public class UpdateTaskUseCaseImpl implements UpdateTaskUseCase {
 
     @Override
     public Task updateTask(Task toUpdateTask, Long id) throws EntityNotFoundException {
+        toUpdateTask.setCreatedAt(taskRepositoryPort.findTaskById(id).get().getCreatedAt());
+        toUpdateTask.setId(id);
         return taskRepositoryPort.updateTask(toUpdateTask, id)
                 .orElseThrow(EntityNotFoundException::new);
     }

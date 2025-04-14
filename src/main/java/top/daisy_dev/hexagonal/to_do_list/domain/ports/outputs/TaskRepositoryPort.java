@@ -15,6 +15,6 @@ public interface TaskRepositoryPort {
 
     List<Task> findAllTasks();
 
-    boolean deleteTaskById(Long taskId);
+    void deleteTaskById(Long taskId);
 
 }

@@ -39,11 +39,11 @@ public class TaskRepositoryAdapter implements TaskRepositoryPort {
     }
 
     @Override
-    public Optional<Task> updateTask(Task task) {
-        if (jpaTaskRepository.existsById(task.getId())) {
+    public Optional<Task> updateTask(Task task, Long id) {
+        if (jpaTaskRepository.existsById(id)) {
             TaskEntity taskEntity = TaskEntity.toEntity(task);
             TaskEntity updatedTask = jpaTaskRepository.save(taskEntity);
-            return this.findTaskById(task.getId());
+            return this.findTaskById(id);
         }
         return Optional.empty();
     }

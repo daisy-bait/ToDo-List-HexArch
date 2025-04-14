@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface RetrieveTaskUseCase {
 
-    Optional<Task> retrieveTask(Long taskId);
+    Task retrieveTask(Long taskId);
 
     List<Task> retrieveTasks();
 

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 import top.daisy_dev.hexagonal.to_do_list.domain.models.Task;
 
 import java.time.LocalDateTime;
@@ -26,7 +27,8 @@ public class TaskEntity {
 
     private String description;
 
-    @Column(nullable = false, name = "created_at")
+    @Column(nullable = true, name = "created_at")
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm:ss")
     private LocalDateTime startDate;
 
     private boolean completed;

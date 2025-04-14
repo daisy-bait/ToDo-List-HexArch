@@ -7,7 +7,6 @@ import top.daisy_dev.hexagonal.to_do_list.domain.models.Task;
 import top.daisy_dev.hexagonal.to_do_list.domain.ports.inputs.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -35,7 +34,7 @@ public class TaskService implements CreateTaskUseCase, UpdateTaskUseCase, Retrie
     }
 
     @Override
-    public Optional<Task> retrieveTask(Long taskId) {
+    public Task retrieveTask(Long taskId) {
         return retrieveTaskUseCase.retrieveTask(taskId);
     }
 
@@ -45,8 +44,8 @@ public class TaskService implements CreateTaskUseCase, UpdateTaskUseCase, Retrie
     }
 
     @Override
-    public Optional<Task> updateTask(Task toUpdateTask) {
-        return updateTaskUseCase.updateTask(toUpdateTask);
+    public Task updateTask(Task toUpdateTask, Long id) {
+        return updateTaskUseCase.updateTask(toUpdateTask, id);
     }
 
 }

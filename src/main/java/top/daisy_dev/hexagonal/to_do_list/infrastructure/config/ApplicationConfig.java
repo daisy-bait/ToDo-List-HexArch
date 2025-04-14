@@ -9,6 +9,7 @@ import top.daisy_dev.hexagonal.to_do_list.domain.ports.outputs.ExternalServicePo
 import top.daisy_dev.hexagonal.to_do_list.domain.ports.outputs.TaskRepositoryPort;
 import top.daisy_dev.hexagonal.to_do_list.infrastructure.output.external.adapter.ExternalServiceAdapter;
 import top.daisy_dev.hexagonal.to_do_list.infrastructure.output.data.adapters.TaskRepositoryAdapter;
+import top.daisy_dev.hexagonal.to_do_list.infrastructure.output.external.clients.JsonPlaceHolderClient;
 
 @Configuration
 public class ApplicationConfig {
@@ -37,8 +38,8 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public ExternalServicePort externalServicePort() {
-        return new ExternalServiceAdapter();
+    public ExternalServicePort externalServicePort(JsonPlaceHolderClient jsonPlaceHolderClient) {
+        return new ExternalServiceAdapter(jsonPlaceHolderClient);
     }
 
 }
